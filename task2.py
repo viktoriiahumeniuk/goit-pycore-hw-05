@@ -1,9 +1,11 @@
 import re
 from typing import Callable
 
+
 def generator_numbers(text: str):
     """Generates numbers from the given text."""
-    for match in re.finditer(r'(?<= )\d+\.\d+(?= )', text):
+    pattern = r"(?<= )[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?= )"
+    for match in re.finditer(pattern, text):
         yield float(match.group())
 
 
